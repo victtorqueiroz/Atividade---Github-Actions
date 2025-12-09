@@ -1,0 +1,29 @@
+# Nome do workflow 
+name: Workflow de Demonstração - Atividade 1
+
+# Gatilho (Trigger): Executa o workflow quando há um push 
+on: [push]
+
+jobs:
+  build-demonstracao:
+    # Define o ambiente (runner) onde o job será executado (Ubuntu Linux) 
+    runs-on: ubuntu-latest
+
+    steps:
+      # Action 1: Checkout do código (Permite acessar os arquivos do repositório)
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # Action 2: Configuração do ambiente Node.js (Action escolhida) 
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+            node-version: 16 
+
+      # Comando simples 1: Imprimir mensagem no console 
+      - name: Imprimir mensagem
+        run: echo "Pipeline executada com sucesso! O ambiente foi configurado."
+
+      # Comando simples 2: Listar arquivos do repositório 
+      - name: Listar arquivos
+        run: ls -la
